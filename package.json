@@ -6,6 +6,9 @@
   "repository": "https://github.com/clarityhub/serverless-dynamodb-migrations",
   "author": "Clarity Hub <opensource@clarityhub.io>, Tommy Brunn <tommy.brunn@gmail.com>",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "precommit": "lint-staged",
     "format": "prettier --write *.js",
