@@ -46,18 +46,19 @@ provider:
   name: aws
 
 plugins:
-  - serverless-pg-migrations
+  - "@clarityhub/serverless-dynamodb-migrations"
 
-up:
-  handler: migrations.up
-  timeout: 30
-  environment:
-    MIGRATION_TABLE: migrations
-down:
-  handler: migrations.down
-  timeout: 30
-  environment:
-    MIGRATION_TABLE: migrations
+functions:
+  up:
+    handler: migrations.up
+    timeout: 30
+    environment:
+      MIGRATION_TABLE: migrations
+  down:
+    handler: migrations.down
+    timeout: 30
+    environment:
+      MIGRATION_TABLE: migrations
 ```
 
 Pass the function to the serverless deploy command to have it execute after the deploy is finished:
@@ -83,4 +84,4 @@ sls migrate down
 
 The provided migration handlers can be imported with `const { up, down} = require("@clarityhub/serverless-dynamodb-migrations/handlers")`.
 
-The functions need to have the environment variable `MIGRATION_TABLE` set to a valid DynamoDB table that has already been created. You can use [resources](https://serverless-stack.com/chapters/configure-dynamodb-in-serverless.html) to create one.
+The functions need to have the environment variable `MIGRATION_TABLE` set to the DynamoDB table name you want to use. If the table doesn't exist, the migrations will create the table for you. You can use [resources](https://serverless-stack.com/chapters/configure-dynamodb-in-serverless.html) to create one if you want though.

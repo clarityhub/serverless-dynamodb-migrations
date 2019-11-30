@@ -12,7 +12,7 @@ const failure = response => ({
 
 const handler = handlerName => (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
-  const migration = new Migration(process.env.DATABASE_URL);
+  const migration = new Migration(process.env.MIGRATION_TABLE);
 
   migration[handlerName]()
     .then(migrations => {
