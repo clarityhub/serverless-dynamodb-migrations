@@ -1,28 +1,23 @@
-const Sequelize = require("sequelize");
 const Umzug = require("umzug");
+const AWS = require("aws-sdk");
 
 module.exports = class Migration {
-  constructor(connectionString) {
-    this.connectionString = connectionString;
+  constructor(migrationTable) {
+    this.migrationTable = migrationTable;
     this.close = this.init();
   }
 
   init() {
-    this.sequelize = new Sequelize(this.connectionString, {
-      pool: {
-        max: 1,
-        min: 0,
-        idle: 5000
-      }
-    });
+    this.dynamodb = new AWS.DynamoDB();
 
     this.umzug = new Umzug({
-      storage: "sequelize",
+      storage: "umzug-dynamodb-storage",
       storageOptions: {
-        sequelize: this.sequelize
+        dynamodb: this.dynamodb,
+        table: this.migrationTable
       },
       migrations: {
-        params: [this.sequelize.getQueryInterface(), this.sequelize.constructor]
+        params: [this.dynamodb]
       },
       logging: function() {
         console.log.apply(null, arguments);
@@ -30,7 +25,7 @@ module.exports = class Migration {
     });
 
     return () => {
-      this.sequelize.close();
+      // Nothing to clean up
     };
   }
 

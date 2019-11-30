@@ -48,7 +48,7 @@ class ServerlessUmzugMigrations {
   }
 
   migrate() {
-    const migration = new Migration(this.getDatabaseConnectionString());
+    const migration = new Migration(this.getMigrationTable());
 
     return migration
       .up()
@@ -67,7 +67,7 @@ class ServerlessUmzugMigrations {
   }
 
   rollback() {
-    const migration = new Migration(this.getDatabaseConnectionString());
+    const migration = new Migration(this.getMigrationTable());
 
     return migration
       .down()
@@ -85,13 +85,13 @@ class ServerlessUmzugMigrations {
       });
   }
 
-  getDatabaseConnectionString() {
-    if (!process.env.DATABASE_URL) {
-      this.log("DATABASE_URL environment variable required");
+  getMigrationTable() {
+    if (!process.env.MIGRATION_TABLE) {
+      this.log("MIGRATION_TABLE environment variable required");
       process.exit(1);
     }
 
-    return process.env.DATABASE_URL;
+    return process.env.MIGRATION_TABLE;
   }
 }
 
