@@ -1,6 +1,6 @@
 {
   "name": "@clarityhub/serverless-dynamodb-migrations",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Trigger DynamoDB migrations from AWS Lambda with Serverless ⚡️",
   "main": "index.js",
   "repository": "https://github.com/clarityhub/serverless-dynamodb-migrations",
