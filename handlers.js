@@ -14,8 +14,7 @@ const handler = handlerName => (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
   const migration = new Migration(process.env.DATABASE_URL);
 
-  migration
-    [handlerName]()
+  migration[handlerName]()
     .then(migrations => {
       const response = migrations.map(({ file }) => file).join("\n");
       migration.close();

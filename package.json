@@ -8,7 +8,8 @@
   "license": "MIT",
   "scripts": {
     "precommit": "lint-staged",
-    "format": "prettier --write *.js"
+    "format": "prettier --write *.js",
+    "test": "jest"
   },
   "dependencies": {
     "umzug": "^2.0.1",
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "husky": "^0.14.3",
+    "jest": "^24.9.0",
     "lint-staged": "^4.0.2",
     "prettier": "^1.5.3"
   },

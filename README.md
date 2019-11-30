@@ -1,7 +1,7 @@
 # Serverless DynamoDB Migrations
 
 [![Build Status](https://travis-ci.org/clarityhub/serverless-dynamodb-migrations.svg?branch=master)](https://travis-ci.org/clarityhub/serverless-dynamodb-migrations)
-[![NPM version](https://badge.fury.io/js/clarityhub/serverless-dynamodb-migrations.svg)](http://badge.fury.io/js/clarityhub/serverless-dynamodb-migrations)
+[![NPM version](https://badge.fury.io/js/%40clarityhub%2Fserverless-dynamodb-migrations.svg)](https://badge.fury.io/js/%40clarityhub%2Fserverless-dynamodb-migrations)
 
 Database migrations for AWS Lambda and DynamoDB using [DynamoDB Migrations](https://github.com/Floby/node-umzug-dynamodb-storage).
 
